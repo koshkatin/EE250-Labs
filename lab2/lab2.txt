@@ -1,0 +1,12 @@
+Question 1: How did the reliability of UDP change when you added 50% loss to your local
+environment? Why did this occur?
+    UDP did not deliver all the messages and dropped some due to congestion. 
+    This occurs because UDP prioritizes speed over realiability.
+
+Question 2: How did the reliability of TCP change? Why did this occur? 
+    TCP remained reliable and delivered all messages but with much longer delay.
+    This is because TCP is a reliable protocol and prioritizes sending all messages over speed. 
+
+Question 3: How did the speed of the TCP response change? Why might this happen?
+    TCP became much slower. This happens because TCP has to ensure it sends all messages
+    in the correct order and uses congestion control protocols that introduce delay. 
