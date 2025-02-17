@@ -2,7 +2,7 @@ import requests
 import argparse
 import pprint # For pretty printing
 
-SERVER = 'http://localhost:5000'
+SERVER = 'http://127.0.0.1:5000'
 
 def send_mail(recipient: str, sender: str, subject: str, body: str) -> bool:
     """
@@ -32,25 +32,53 @@ def send_mail(recipient: str, sender: str, subject: str, body: str) -> bool:
     pprint.pprint(response.json())
 
 def get_inbox(recipient: str) -> None:
-    """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    """
+    Retrieves the inbox for a given recipient by sending a GET request to /mail/inbox/{recipient}.
+
+    Args:
+        recipient (str): The recipient whose inbox is getting retrieved
+
+    Returns:
+        None: The function prints the inbox messages that were retrieved. With pprint the output will be more organized than the typical print 
     """
     response = requests.get(f'{SERVER}/mail/inbox/{recipient}')
     pprint.pprint(response.json())
 
 def get_sent(sender: str) -> None:
-    """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    """
+    Retrieves the sent mail for a specifc sender by sending a GET request to /mail/sent/{sender}.
+
+    Args:
+        sender (str): The sender whose sent mail is getting retrieved
+
+    Returns:
+        None: The function prints the list of sent messages that were retrieved, with pprint for more ogranization than typically
     """
     response = requests.get(f'{SERVER}/mail/sent/{sender}')
     pprint.pprint(response.json())
 
 def get_mail(mail_id: str) -> None:
-    """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    """
+    Retreives the unique mail ID by sending a GET request to /mail/{mail_id}.
+
+    Args:
+        mail_id (str): The unique ID of the mail that is getting retrieved
+
+    Returns:
+        None: The function prints the list of unique mail IDs, using pprint for more organization than typically used with print 
     """
     response = requests.get(f'{SERVER}/mail/{mail_id}')
     pprint.pprint(response.json())
 
 def delete_mail(mail_id: str) -> None:
-    """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    """
+    Deletes a maily entry by sending a DELETE request to /mail/{mail_id}.
+
+    Args:
+        mail_id (str): The unique ID of the mail entry to delete
+    
+    Returns:
+        None: Prints the servers reponse after attempting to delete the mail entry
     """
     response = requests.delete(f'{SERVER}/mail/{mail_id}')
     pprint.pprint(response.json())
